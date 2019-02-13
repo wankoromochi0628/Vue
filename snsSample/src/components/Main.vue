@@ -8,6 +8,9 @@
 import Menu from "@/components/Menu.vue";
 
 export default {
-    name: "Main"
+    name: "Main",
+    components:{
+        Menu:Menu
+    }
 };
 </script>
