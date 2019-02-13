@@ -11,7 +11,7 @@ import Header from "@/components/Header.vue";
 import Main from "@/components/Main.vue";
 
 export default {
-  name: "home",
+  name: "About",
   components: {
     Header,
     Main
