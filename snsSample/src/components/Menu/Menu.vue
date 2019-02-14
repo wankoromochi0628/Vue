@@ -1,8 +1,5 @@
 <template>
     <div class="submenu column is-3">
-    　　<aside class="box">
-            クライアントサイド JavaScript開発を極める
-        </aside>
         <aside class="box menu">
             <p class="menu-label">
             リスト
@@ -17,7 +14,7 @@
                 <li><a href="#">目次</a></li>
                 <li><a class="is-active" href="#">サンプルプログラム</a>
                     <ul>
-                    <li><a href="#1">SNSアプリを実装する</a></li>
+                        <li><a href="#1">SNSアプリを実装する</a></li>
                     </ul>
                 </li>
             </ul>

@@ -1,14 +1,13 @@
 <template>
   <div class="home">
-    <Header />
+    <Header/>
     <Main />
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import Header from "@/components/Header.vue";
-import Main from "@/components/Main.vue";
+import Header from "@/components/Header/Header.vue";
+import Main from "@/components/Main/Main.vue";
 
 export default {
   name: "About",
@@ -18,3 +17,7 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+
+</style>
