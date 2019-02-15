@@ -1,8 +1,8 @@
 <template>
     <div class="column">
-        <TextForm class="text"/>
-        <RegistBtn class="btn" @regist="regist" />
-        <article class="box media">
+        <RegistBox />
+        <!-- <RegistBtn class="btn"/> -->
+        <article class="box media" >
             <figure class="media-left">
                 <p class="image is-64x64">
                     <img src="../../assets/logo.png">
@@ -21,29 +21,20 @@
 </template>
 
 <script>
-    import TextForm from "@/components/TextForm/TextForm.vue";
-    import RegistBtn from "@/components/Button/RegistBtn.vue";
+    import RegistBox from "@/components/Molecules/Box/RegistBox.vue";
 
     export default {
         name: "Contents",
-        components:{
-            TextForm:TextForm,
-            RegistBtn:RegistBtn
+        components: {
+            RegistBox: RegistBox
         },
-        method: {
-            regist() {
-                
+        data: {
+            items: {
+                name
             }
         }
     };
 </script>
 
 <style scoped>
-    .text {
-        margin: 10px 0px;
-    }
-    .btn {
-        margin: 0px 0px 10px 0px;
-        margin-right: 100%;
-    }
 </style>
