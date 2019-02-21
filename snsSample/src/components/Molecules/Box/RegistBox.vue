@@ -12,6 +12,7 @@ import RegistBtn from "@/components/Atoms/Button/RegistBtn.vue";
 
 export default {
     name: "RegistBox",
+    props: ['words'],
     components: {
         TextForm:TextForm,
         RegistBtn:RegistBtn

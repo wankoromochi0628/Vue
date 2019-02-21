@@ -1,11 +1,11 @@
 <template>
     <div class="column">
-        <RegistBox />
-        <!-- <RegistBtn class="btn"/> -->
-        <article class="box media" >
+        <RegistBox :words='words'/>
+        <!-- <article class="box media" v-for="(name, words) in content"> -->
+        <article class="box media">
             <figure class="media-left">
                 <p class="image is-64x64">
-                    <img src="../../assets/logo.png">
+                    <img src="../../../assets/logo.png">
                 </p>
             </figure>
             <div class="media-content">
@@ -21,19 +21,14 @@
 </template>
 
 <script>
-    import RegistBox from "@/components/Molecules/Box/RegistBox.vue";
+import RegistBox from "@/components/Molecules/Box/RegistBox.vue";
 
-    export default {
-        name: "Contents",
-        components: {
-            RegistBox: RegistBox
-        },
-        data: {
-            items: {
-                name
-            }
-        }
-    };
+export default {
+    name: "Contents",
+    components: {
+        RegistBox: RegistBox
+    }
+};
 </script>
 
 <style scoped>
