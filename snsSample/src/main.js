@@ -14,5 +14,4 @@ new Vue({
   router,
   store,
   render: h => h(App)
-}).$mou
-nt("#app");
+}).$mount("#app");

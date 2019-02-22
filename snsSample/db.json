@@ -16,8 +16,11 @@
   "profile": {
     "name": "typicode"
   },
-  "contents": {
-    "name": "鈴木",
-    "words": "Hello, world!"
-  }
+  "contents": [
+    {
+      "id": 1,
+      "name": "y_suzuki",
+      "words": "おはようございます！"
+    }
+  ]
 }

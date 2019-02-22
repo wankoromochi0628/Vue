@@ -1,6 +1,6 @@
 <template>
     <div class="column">
-        <RegistBox :words='words'/>
+        <RegistBox :content='content'/>
         <!-- <article class="box media" v-for="(name, words) in content"> -->
         <article class="box media">
             <figure class="media-left">
@@ -25,11 +25,12 @@ import RegistBox from "@/components/Molecules/Box/RegistBox.vue";
 
 export default {
     name: "Contents",
+    props: ['content'],
     components: {
         RegistBox: RegistBox
+    },
+    methods: {
+
     }
 };
 </script>
-
-<style scoped>
-</style>

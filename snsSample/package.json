@@ -3,11 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "dev": "npm-run-all -p start serve",
+    "pro": "npm-run-all -p start build",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "buefy": "^0.7.2",
     "register-service-worker": "^1.5.2",
     "vue": "^2.5.22",
@@ -24,7 +27,8 @@
     "eslint": "^5.8.0",
     "eslint-plugin-vue": "^5.0.0",
     "json-server": "^0.14.2",
-    "vue-template-compiler": "^2.5.21"
+    "vue-template-compiler": "^2.5.21",
+    "webpack": "^4.29.5"
   },
   "eslintConfig": {
     "root": true,
