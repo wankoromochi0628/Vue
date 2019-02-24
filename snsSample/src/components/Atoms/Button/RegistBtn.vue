@@ -1,6 +1,5 @@
 <template>
     <div class="button is-success is-outlined" @click="$emit('regist')">投稿</div>
-    <!-- <div class="button is-success is-outlined" @click="regist">投稿</div> -->
 </template>
 
 <script>

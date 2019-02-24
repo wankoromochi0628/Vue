@@ -1,7 +1,7 @@
 <template>
     <div class="column">
-        <RegistBox :content='content'/>
-        <!-- <article class="box media" v-for="(name, words) in content"> -->
+        <RegistBox v-on:regist="registWord"/>
+
         <article class="box media">
             <figure class="media-left">
                 <p class="image is-64x64">
@@ -25,12 +25,31 @@ import RegistBox from "@/components/Molecules/Box/RegistBox.vue";
 
 export default {
     name: "Contents",
-    props: ['content'],
+    data() {
+        return {
+            content: {}
+        }
+    },
     components: {
         RegistBox: RegistBox
     },
     methods: {
+        async registWord() {
+            // axios を require してインスタンスを生成する
+            const axiosBase = require('axios');
+            const axios = axiosBase.create({
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-Requested-With': 'XMLHttpRequest'
+                },
+                responseType: 'json'
+            });
 
+            const {data} = await axios.get("http://localhost:3000/contents/");
+
+            console.log(data);
+            this.content = data;
+        }
     }
 };
 </script>
