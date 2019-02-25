@@ -21,6 +21,11 @@
       "id": 1,
       "name": "y_suzuki",
       "words": "おはようございます！"
+    },
+    {
+      "id": 2,
+      "name": "a_uemoto",
+      "words": "こんにちは！"
     }
   ]
 }

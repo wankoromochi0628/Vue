@@ -1,17 +1,17 @@
 <template>
     <div class="column">
-        <RegistBox v-on:regist="registWord"/>
+        <RegistBox v-on:regist="registContent"/>
 
-        <article class="box media">
+        <article class="box media" v-for="(content) in contents">
             <figure class="media-left">
                 <p class="image is-64x64">
                     <img src="../../../assets/logo.png">
                 </p>
             </figure>
             <div class="media-content">
-                <div class="content" id="1">
-                    <p><strong>ストレージを変更する</strong><br>
-                        元画面にてストレージを変更し、当画面でストレージの変更を検知させる。<br><br>
+                <div class="content" >
+                    <p><strong>{{content.name}}</strong><br>
+                        {{content.words}}<br>
                         <small><a>Like</a> · <a>Reply</a> · 2 hrs</small>
                     </p>
                 </div>
@@ -27,28 +27,53 @@ export default {
     name: "Contents",
     data() {
         return {
-            content: {}
+            contents: {}
         }
     },
     components: {
         RegistBox: RegistBox
     },
+    async mounted() {
+        // axios を require してインスタンスを生成する
+        const axiosBase = require('axios');
+        const axios = axiosBase.create({
+            headers: {
+                'Content-Type': 'application/json',
+                'X-Requested-With': 'XMLHttpRequest'
+            },
+            responseType: 'json'
+        });
+
+        const {data} = await axios.get("http://localhost:3000/contents/");
+
+        console.log(data);
+        this.content = data;
+        console.log(this.content);
+    },
     methods: {
-        async registWord() {
-            // axios を require してインスタンスを生成する
-            const axiosBase = require('axios');
-            const axios = axiosBase.create({
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-Requested-With': 'XMLHttpRequest'
-                },
-                responseType: 'json'
+        // async dispContents() {
+        //     // axios を require してインスタンスを生成する
+        //     const axiosBase = require('axios');
+        //     const axios = axiosBase.create({
+        //         headers: {
+        //             'Content-Type': 'application/json',
+        //             'X-Requested-With': 'XMLHttpRequest'
+        //         },
+        //         responseType: 'json'
+        //     });
+
+        //     const {data} = await axios.get("http://localhost:3000/contents/");
+
+        //     console.log(data);
+        //     this.content = data;
+        //     console.log(this.content);
+        // }
+        async registContent() {
+            await axios.post("http://localhost:3000/contents/", {
+                name: "y_suzuki",
+                words: 
             });
-
-            const {data} = await axios.get("http://localhost:3000/contents/");
-
-            console.log(data);
-            this.content = data;
+            // await axios.get("http://localhost:3000/contents/");
         }
     }
 };
