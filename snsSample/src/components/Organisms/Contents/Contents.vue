@@ -33,7 +33,8 @@ export default {
     components: {
         RegistBox: RegistBox
     },
-    async mounted() {
+    methods: {
+        async dispContents() {
         // axios を require してインスタンスを生成する
         const axiosBase = require('axios');
         const axios = axiosBase.create({
@@ -46,35 +47,24 @@ export default {
 
         const {data} = await axios.get("http://localhost:3000/contents/");
 
-        console.log(data);
-        this.content = data;
-        console.log(this.content);
-    },
-    methods: {
-        // async dispContents() {
-        //     // axios を require してインスタンスを生成する
-        //     const axiosBase = require('axios');
-        //     const axios = axiosBase.create({
-        //         headers: {
-        //             'Content-Type': 'application/json',
-        //             'X-Requested-With': 'XMLHttpRequest'
-        //         },
-        //         responseType: 'json'
-        //     });
-
-        //     const {data} = await axios.get("http://localhost:3000/contents/");
-
-        //     console.log(data);
-        //     this.content = data;
-        //     console.log(this.content);
-        // }
+        this.contents = data;
+        console.log(this.contents);
+        },
         async registContent() {
+            // axios を require してインスタンスを生成する
+            const axiosBase = require('axios');
+
             await axios.post("http://localhost:3000/contents/", {
+                id: "",
                 name: "y_suzuki",
-                words: 
+                words: "新しい投稿です。"
+            }).then(response => {
+                console.log('body:', response.data);
             });
-            // await axios.get("http://localhost:3000/contents/");
         }
+    },
+    created: function() {
+        this.dispContents();
     }
 };
 </script>
