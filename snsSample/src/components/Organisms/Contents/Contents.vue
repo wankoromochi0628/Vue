@@ -8,11 +8,11 @@
                     <img src="../../../assets/logo.png">
                 </p>
             </figure>
-            <div class="media-content">
-                <div class="content" >
+            <div class="media-content" >
+                <div class="content" id="id-{{content.id}}">
                     <p><strong>{{content.name}}</strong><br>
                         {{content.words}}<br>
-                        <small><a>Like</a> · <a>Reply</a> · 2 hrs</small>
+                        <small><a>delete</a> · 2 hrs</small>
                     </p>
                 </div>
             </div>
@@ -25,6 +25,12 @@ import RegistBox from "@/components/Molecules/Box/RegistBox.vue";
 
 export default {
     name: "Contents",
+    created: function() {
+        this.dispContents();
+    },
+    updated: function() {
+        this.dispContents();
+    },
     data() {
         return {
             contents: {}
@@ -34,6 +40,7 @@ export default {
         RegistBox: RegistBox
     },
     methods: {
+        // 表示メソッド
         async dispContents() {
         // axios を require してインスタンスを生成する
         const axiosBase = require('axios');
@@ -48,23 +55,22 @@ export default {
         const {data} = await axios.get("http://localhost:3000/contents/");
 
         this.contents = data;
-        console.log(this.contents);
         },
-        async registContent() {
-            // axios を require してインスタンスを生成する
-            const axiosBase = require('axios');
 
-            await axios.post("http://localhost:3000/contents/", {
-                id: "",
-                name: "y_suzuki",
-                words: "新しい投稿です。"
-            }).then(response => {
-                console.log('body:', response.data);
-            });
+        // 登録メソッド
+        async registContent(postSentence) {
+            console.log(postSentence);
+            fetch('http://localhost:3000/contents/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    'name': 'y_suzuki',
+                    'words': '新しい投稿です。'
+                })
+            }).then(res => res.json());
         }
-    },
-    created: function() {
-        this.dispContents();
     }
 };
 </script>
