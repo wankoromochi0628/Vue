@@ -9,7 +9,7 @@
                 </p>
             </figure>
             <div class="media-content" >
-                <div class="content" id="id-{{content.id}}">
+                <div class="content" >
                     <p><strong>{{content.name}}</strong><br>
                         {{content.words}}<br>
                         <small><a>delete</a> · 2 hrs</small>

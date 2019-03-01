@@ -1,7 +1,7 @@
 <template>
     <div>
-        <TextForm class="text" v-model="posteSentence"/>
-        <RegistBtn class="btn" @regist='regist' />
+        <TextForm class="text" :sentence="sentence" />
+        <RegistBtn class="btn" @regist='regist' :sentence="sentence" />
     </div>
 </template>
 
@@ -11,9 +11,12 @@ import RegistBtn from "@/components/Atoms/Button/RegistBtn.vue";
 
 export default {
     name: "RegistBox",
+    updated: function() {
+        // console.log(this.sentence);
+    },
     data() {
         return {
-            postSentence: "テスト"
+            sentence: {'text':[]}
         }
     },
     components: {
@@ -22,7 +25,7 @@ export default {
     },
     methods: {
         regist() {
-            console.log(this.postSentence);
+            console.log(this.sentence);
             this.$emit('regist', this.postWord);
         }
     }
