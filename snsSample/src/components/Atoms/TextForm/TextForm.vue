@@ -2,7 +2,7 @@
     <div class="field">
         <div class="control">
             {{sentence.text}}
-            <textarea v-model="sentence.text" class="textarea is-primary" placeholder="最近起きたことを投稿してみよう"></textarea>
+            <textarea v-model="sentence" class="textarea is-primary" placeholder="最近起きたことを投稿してみよう"></textarea>
         </div>
     </div>
 </template>
@@ -11,21 +11,20 @@
     export default {
         name: "TextForm",
         props: {
-            postSentence
+            postSentence: {
+                type: String,
+                description: "投稿内容"
+            }
         },
         computed: {
             sentence: {
                 get() {
-                    return this.sentence;
+                    return this.postSentence;
                 },
                 set(newSentence) {
-                    this.sentence;
+                    this.postSentence = newSentence;
+                    this.$emit('writtenSentence', this.postSentence)
                 }
-            }
-        },
-        data() {
-            return {
-                postSentence :String
             }
         }
     };

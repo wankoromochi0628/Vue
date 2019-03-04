@@ -1,6 +1,6 @@
 <template>
     <div>
-        <TextForm class="text" :sentence="sentence" />
+        <TextForm class="text" :sentence="sentence" @writtenSentence="updateSentence"/>
         <RegistBtn class="btn" @regist='regist' :sentence="sentence" />
     </div>
 </template>
@@ -16,7 +16,9 @@ export default {
     },
     data() {
         return {
-            sentence: {'text':[]}
+            sentence: {
+                type: String
+            }
         }
     },
     components: {
@@ -27,6 +29,9 @@ export default {
         regist() {
             console.log(this.sentence);
             this.$emit('regist', this.postWord);
+        },
+        updateSentence(newSentence) {
+            console.log(newSentence);
         }
     }
 }
