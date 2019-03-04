@@ -59,7 +59,7 @@ export default {
 
         // 登録メソッド
         async registContent(postSentence) {
-            console.log(postSentence);
+            // console.log(postSentence);
             fetch('http://localhost:3000/contents/', {
                 method: 'POST',
                 headers: {

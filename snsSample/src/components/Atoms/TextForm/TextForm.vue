@@ -11,20 +11,21 @@
     export default {
         name: "TextForm",
         props: {
-            sentence:Object
+            postSentence
         },
-        // updated: function() {
-        //     console.log(this.sentence);
-        //     this.postSentence = this.sentence
-        // },
         computed: {
-            print() {
-                return this.sentence
+            sentence: {
+                get() {
+                    return this.sentence;
+                },
+                set(newSentence) {
+                    this.sentence;
+                }
             }
         },
         data() {
             return {
-                // postSentence :String
+                postSentence :String
             }
         }
     };
