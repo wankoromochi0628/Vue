@@ -22,7 +22,6 @@
                     return this.postSentence;
                 },
                 set(newSentence) {
-                    // this.postSentence = newSentence;
                     this.$emit('writtenSentence', newSentence);
                 }
             }
