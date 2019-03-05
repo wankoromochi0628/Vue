@@ -2,7 +2,7 @@
     <div class="submenu column is-3">
         <aside class="box menu">
             <p class="menu-label">
-            リスト
+            {{count}}リスト
             </p>
             <ul class="menu-list">
                 <li><a href="#">テスト<small>@test</small></a></li>
@@ -23,7 +23,12 @@
 </template>
 
 <script>
+import {mapState} from 'vuex';
+
 export default {
-    name: "Menu"
+    name: "Menu",
+    computed: {
+        ...mapState(['count']),
+    }
 };
 </script>
