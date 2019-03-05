@@ -31,7 +31,8 @@ export default {
             this.$emit('regist', this.postWord);
         },
         updateSentence(newSentence) {
-            console.log(newSentence);
+            console.log("RegistBox：" + newSentence);
+            this.$emit('updateSentence', newSentence);
         }
     }
 }

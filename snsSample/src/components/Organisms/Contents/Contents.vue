@@ -1,8 +1,8 @@
 <template>
     <div class="column">
-        <RegistBox v-on:regist="registContent"/>
+        <RegistBox v-on:regist="registContent" @updateSentence="setSentence"/>
 
-        <article class="box media" v-for="(content) in contents">
+        <article class="box media" v-for="(content, index) in contents" v-bind:key="index">
             <figure class="media-left">
                 <p class="image is-64x64">
                     <img src="../../../assets/logo.png">
@@ -10,9 +10,9 @@
             </figure>
             <div class="media-content" >
                 <div class="content" >
-                    <p><strong>{{content.name}}</strong><br>
+                    <p>ID:{{content.id}}<br><strong>{{content.name}}</strong><br>
                         {{content.words}}<br>
-                        <small><a>delete</a> · 2 hrs</small>
+                        <small><a v-on:click="deleteContent(content.id)">delete</a> · 2 hrs</small>
                     </p>
                 </div>
             </div>
@@ -33,13 +33,27 @@ export default {
     },
     data() {
         return {
-            contents: {}
+            contents: {},
+            sentence: {
+                type: String,
+                description: "登録する投稿内容"
+            },
+            id: {
+                type: Number,
+                description: "投稿ID"
+            }
         }
     },
     components: {
         RegistBox: RegistBox
     },
     methods: {
+        // 投稿内容更新
+        setSentence(newSentence) {
+            this.sentence = newSentence;
+            console.log("Contents：" + newSentence);
+        },
+
         // 表示メソッド
         async dispContents() {
         // axios を require してインスタンスを生成する
@@ -59,17 +73,25 @@ export default {
 
         // 登録メソッド
         async registContent(postSentence) {
-            // console.log(postSentence);
             fetch('http://localhost:3000/contents/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-                    'name': 'y_suzuki',
-                    'words': '新しい投稿です。'
+                    'name': 'wankoromochi0628',
+                    'words': this.sentence
                 })
             }).then(res => res.json());
+        },
+
+        // 削除メソッド
+        async deleteContent(id) {
+            fetch('http://localhost:3000/contents/' + id, {
+                method: 'DELETE'
+            }).then(console.log);
+
+            console.log(id + "を削除しました。");
         }
     }
 };

@@ -1,7 +1,7 @@
 <template>
     <div class="field">
         <div class="control">
-            {{sentence.text}}
+            {{postSentence}}
             <textarea v-model="sentence" class="textarea is-primary" placeholder="最近起きたことを投稿してみよう"></textarea>
         </div>
     </div>
@@ -22,8 +22,8 @@
                     return this.postSentence;
                 },
                 set(newSentence) {
-                    this.postSentence = newSentence;
-                    this.$emit('writtenSentence', this.postSentence)
+                    // this.postSentence = newSentence;
+                    this.$emit('writtenSentence', newSentence);
                 }
             }
         }
