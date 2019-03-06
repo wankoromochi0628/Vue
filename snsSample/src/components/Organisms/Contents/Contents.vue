@@ -29,7 +29,7 @@ export default {
         this.dispContents();
     },
     updated: function() {
-        this.dispContents();
+        // this.dispContents();
     },
     data() {
         return {
