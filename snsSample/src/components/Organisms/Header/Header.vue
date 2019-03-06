@@ -13,6 +13,9 @@
 </template>
 
 <script>
+import {mapMutations} from 'vuex';
+import {mapState} from 'vuex';
+
 export default {
     name: "Header",
     data() {
@@ -21,12 +24,10 @@ export default {
         }
     },
     methods: {
-        countUp() {
-            // this.count++;
-        }
+        ...mapMutations(['countUp'])
     },
-    props: {
-        msg: String
+    computed: {
+        ...mapState(['count']),
     }
 };
 </script>
