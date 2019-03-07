@@ -16,6 +16,11 @@
   "profile": {
     "name": "typicode"
   },
+  "header": {
+    "title": "Vue SNS",
+    "subTitle": "下期課題",
+    "author": "y_suzuki"
+  },
   "contents": [
     {
       "id": 1,
@@ -29,13 +34,8 @@
     },
     {
       "name": "wankoromochi0628",
-      "words": "Hello, world!",
+      "words": "こんばんは",
       "id": 3
-    },
-    {
-      "name": "wankoromochi0628",
-      "words": "４回目の投稿です",
-      "id": 4
     }
   ]
 }

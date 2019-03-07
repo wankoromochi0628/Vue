@@ -18,9 +18,15 @@ import {mapState} from 'vuex';
 
 export default {
     name: "Header",
+    created: {
+        ...mapMutations(['getHeader'])
+    },
     data() {
         return {
-            count: 0
+            count: 0,
+            title: "",
+            subTitle: "",
+            author: ""
         }
     },
     methods: {
@@ -28,6 +34,9 @@ export default {
     },
     computed: {
         ...mapState(['count']),
+        ...mapState(['title']),
+        ...mapState(['subTitle']),
+        ...mapState(['author'])
     }
 };
 </script>

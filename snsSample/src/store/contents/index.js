@@ -20,7 +20,6 @@ const actions = {
 };
 
 export default new Vuex.Store({
-
     state: state,
     mutations: mutations,
     actions: actions
