@@ -2,41 +2,41 @@
     <div class="hero is-primary is-bold">
         <div class="hero-body">
             <div class="container">
-                <h1 class="title">Vue SNS</h1>
-                <h2 class="subtitle">下期課題</h2>
-                <h2 class="subtitle">@wankoromochi0628</h2>
-                <p><strong>{{count}}</strong></p>
-                <input type="button" value="1を足す" class="is-link is-outlined" @click="countUp()"/>
+                <!-- <h1 class="title">{{title}}</h1>
+                <h2 class="subtitle">{{subTitle}}</h2>
+                <h2 class="subtitle">{{author}}</h2> -->
+                <h1 class="title">タイトル</h1>
+                <h2 class="subtitle">サブタイトル</h2>
+                <h2 class="subtitle">鈴木</h2>
+                <br>{{count}}
+                <button @click='increment'>+</button>
+                <button @click='decrement'>-</button>
             </div>
         </div>
     </div>
 </template>
 
 <script>
-import {mapMutations} from 'vuex';
+import {mapMutations, mapActions} from 'vuex';
 import {mapState} from 'vuex';
+import {store} from 'vuex';
+import index from ''
 
 export default {
     name: "Header",
-    created: {
-        ...mapMutations(['getHeader'])
+    async created() {
     },
     data() {
         return {
-            count: 0,
-            title: "",
-            subTitle: "",
-            author: ""
+            count : 0
         }
     },
     methods: {
-        ...mapMutations(['countUp'])
+        ...mapMutations('increment'),
+        ...mapMutations('decrement')
     },
     computed: {
         ...mapState(['count']),
-        ...mapState(['title']),
-        ...mapState(['subTitle']),
-        ...mapState(['author'])
     }
 };
 </script>

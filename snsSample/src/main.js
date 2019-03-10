@@ -12,6 +12,30 @@ Vue.use(Buefy);
 
 Vue.config.productionTip = false;
 
+const state = {
+    count: 0
+};
+
+const mutations = {
+    countUp(state,payload) {
+        state.count += 1;
+    }
+};
+
+const actions = {
+    // getHeaderInfo({commit},payload) {
+    getHeaderInfo({commit}) {
+        console.log('action成功');
+        // commit('countUp',payload);
+    }
+};
+
+export default new Vuex.Store({
+    state: state,
+    mutations: mutations,
+    actions: actions
+});
+
 new Vue({
   router,
   store,

@@ -14,8 +14,10 @@ const mutations = {
 };
 
 const actions = {
-    addNumber({commit},payload) {
-        commit('countUp',payload);
+    // getHeaderInfo({commit},payload) {
+    getHeaderInfo({commit}) {
+        console.log('action成功');
+        // commit('countUp',payload);
     }
 };
 

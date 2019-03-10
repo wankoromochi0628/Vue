@@ -29,7 +29,6 @@ export default {
         this.dispContents();
     },
     updated: function() {
-        // this.dispContents();
     },
     data() {
         return {
@@ -41,7 +40,7 @@ export default {
             id: {
                 type: Number,
                 description: "投稿ID"
-            }
+            },
         }
     },
     components: {
@@ -83,6 +82,8 @@ export default {
                     'words': this.sentence
                 })
             }).then(res => res.json());
+
+            this.dispContents();
         },
 
         // 削除メソッド
@@ -91,6 +92,7 @@ export default {
                 method: 'DELETE'
             }).then(console.log);
 
+            this.dispContents();
             console.log(id + "を削除しました。");
         }
     }
