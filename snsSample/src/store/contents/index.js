@@ -9,7 +9,6 @@ const state = {
 
 const mutations = {
     countUp(state,payload) {
-        state.count += 1;
     }
 };
 

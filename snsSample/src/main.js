@@ -18,13 +18,12 @@ const state = {
 
 const mutations = {
     countUp(state,payload) {
-        state.count += 1;
     }
 };
 
 const actions = {
     // getHeaderInfo({commit},payload) {
-    getHeaderInfo({commit}) {
+    getHeaderInfo(state) {
         console.log('action成功');
         // commit('countUp',payload);
     }
