@@ -1,15 +1,18 @@
 <template>
   <div id="app">
-      <About />
+    <Header/>
+    <About />
   </div>
 </template>
 
 <script>
   import About from "@/views/About.vue";
+  import Header from "@/components/Organisms/Header/Header.vue";
 
   export default {
     components:{
-      About:About
+      About:About,
+      Header:Header
     }
   }
 </script>

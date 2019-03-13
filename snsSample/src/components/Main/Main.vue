@@ -1,7 +1,7 @@
 <template>
     <main class="columns">
-        <Menu />
-        <Contents />
+        <Menu id="menu"/>
+        <router-view/>
     </main>
 </template>
 
@@ -17,3 +17,9 @@ export default {
     }
 };
 </script>
+
+<style>
+    #menu {
+        margin: 10px;
+    }
+</style>
