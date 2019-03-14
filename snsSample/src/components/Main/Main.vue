@@ -1,7 +1,7 @@
 <template>
     <main class="columns">
         <Menu id="menu"/>
-        <router-view/>
+        <Contents/>
     </main>
 </template>
 
