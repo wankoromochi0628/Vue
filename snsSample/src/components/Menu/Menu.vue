@@ -14,7 +14,7 @@
                 <li><a href="#">目次</a></li>
                 <li><a class="is-active" href="#">サンプルプログラム</a>
                     <ul>
-                        <li><a href="#1">SNSアプリを実装する</a></li>
+                        <li><a href="">SNSアプリを実装する</a></li>
                     </ul>
                 </li>
             </ul>
