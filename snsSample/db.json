@@ -19,7 +19,7 @@
   "contents": [
     {
       "id": 1,
-      "name": "wankoromochi0628",
+      "name": "y_s",
       "words": "おはようございます！"
     },
     {
@@ -28,9 +28,16 @@
       "words": "こんにちは！"
     },
     {
-      "name": "wankoromochi0628",
+      "name": "y_s",
       "words": "Hello, world!",
       "id": 3
+    }
+  ],
+  "account": [
+    {
+      "id": 1,
+      "loginId": "wankoromochi0628",
+      "password": "interspace"
     }
   ]
 }

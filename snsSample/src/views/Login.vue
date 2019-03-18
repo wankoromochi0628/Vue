@@ -12,16 +12,16 @@
                         <form>
                             <div class="field">
                                 <div class="control">
-                                    <input class="input is-large" type="email" placeholder="Your Email" autofocus="">
+                                    <input class="input is-large" v-model="loginId" type="text" placeholder="Your LoginID" autofocus="">
                                 </div>
                             </div>
 
                             <div class="field">
                                 <div class="control">
-                                    <input class="input is-large" type="password" placeholder="Your Password">
+                                    <input class="input is-large" v-model="password" type="password" placeholder="Your Password">
                                 </div>
                             </div>
-                            <LoginBtn/>
+                            <LoginBtn @login="login"/>
                         </form>
                     </div>
                     <p class="has-text-grey">
@@ -41,6 +41,30 @@ import LoginBtn from "@/components/Atoms/Button/LoginBtn.vue";
 export default {
     components: {
         LoginBtn
+    },
+    data() {
+        return {
+            loginId: "",
+            password: ""
+        }
+    },
+    method: {
+        login() {
+        // axios を require してインスタンスを生成する
+        const axiosBase = require('axios');
+        const axios = axiosBase.create({
+            headers: {
+                'Content-Type': 'application/json',
+                'X-Requested-With': 'XMLHttpRequest'
+            },
+            responseType: 'json'
+        });
+
+        const {data} = axios.get("http://localhost:3000/account/");
+
+        console.log("到達");
+        console.log(data);
+        }
     }
 }
 </script>
