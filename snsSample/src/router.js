@@ -1,8 +1,8 @@
 import Vue from "vue";
 import Router from "vue-router";
-import Contents from "@/components/Organisms/Contents/Contents.vue";
 import About from "@/views/About.vue";
-import Login from "@/views/Login.vue";
+import Signup from "@/components/Signup";
+import Signin from "@/components/Signin";
 
 Vue.use(Router);
 
@@ -10,17 +10,19 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'Login',
-      component: Login
+      name: 'About',
+      component: About,
+      meta: { requiresAuth: true }
     },
     {
-      path: "/setting",
-      name: "setting",
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () =>
-        import(/* webpackChunkName: "about" */ "./views/About.vue")
+      path: '/signup',
+      name: 'Signup',
+      component: Signup
+    },
+    {
+      path: '/signin',
+      name: 'Signin',
+      component: Signin
     }
   ]
 });

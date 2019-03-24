@@ -1,5 +1,5 @@
 <template>
-    <button class="button is-block is-info is-large is-fullwidth" @click="$emit('login')">Login</button>
+    <div class="button is-block is-info is-large is-fullwidth" @click="$emit('login')">Login</div>
 </template>
 
 <script>

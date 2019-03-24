@@ -5,14 +5,14 @@
             ユーザー
             </p>
             <ul class="menu-list">
-                <li><a href="#">わんころもち<small>@wankoromochi0628</small></a></li>
+                <li><a href="#"><small>@{{menuUser}}</small></a></li>
             </ul>
             <p class="menu-label">
                 キーワード
             </p>
             <ul class="menu-list">
                 <li><a href="#">目次</a></li>
-                <li><a class="is-active" href="#">サンプルプログラム</a>
+                <li><a class="is-success" href="#">サンプルプログラム</a>
                     <ul>
                         <li><a href="">SNSアプリを実装する</a></li>
                     </ul>
@@ -26,6 +26,11 @@
 
 export default {
     name: "Menu",
+    data () {
+        return {
+        menuUser: firebase.auth().currentUser.email
+        }
+    },
     computed: {
     }
 };

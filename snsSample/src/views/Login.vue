@@ -10,18 +10,7 @@
                             <img src="../assets/logo.png">
                         </figure>
                         <form>
-                            <div class="field">
-                                <div class="control">
-                                    <input class="input is-large" v-model="loginId" type="text" placeholder="Your LoginID" autofocus="">
-                                </div>
-                            </div>
-
-                            <div class="field">
-                                <div class="control">
-                                    <input class="input is-large" v-model="password" type="password" placeholder="Your Password">
-                                </div>
-                            </div>
-                            <LoginBtn @login="login"/>
+                            <!-- <LoginBox /> -->
                         </form>
                     </div>
                     <p class="has-text-grey">
@@ -36,35 +25,47 @@
 </template>
 
 <script>
-import LoginBtn from "@/components/Atoms/Button/LoginBtn.vue";
+// import MailForm from "@/components/Atoms/TextForm/MailForm.vue";
+// import PasswordForm from "@/components/Atoms/TextForm/PasswordForm.vue";
+// import LoginBtn from "@/components/Atoms/Button/LoginBtn.vue";
 
 export default {
-    components: {
-        LoginBtn
-    },
-    data() {
-        return {
-            loginId: "",
-            password: ""
-        }
-    },
-    method: {
-        login() {
-        // axios を require してインスタンスを生成する
-        const axiosBase = require('axios');
-        const axios = axiosBase.create({
-            headers: {
-                'Content-Type': 'application/json',
-                'X-Requested-With': 'XMLHttpRequest'
-            },
-            responseType: 'json'
-        });
+    // components: {
+    //     MailForm: MailForm,
+    //     PasswordForm: PasswordForm,
+    //     LoginBtn: LoginBtn
+    // },
+    // data() {
+    //     return {
+    //         loginId: "",
+    //         password: "",
+    //     }
+    // },
+    // method: {
+    //     regist() {
+    //     // axios を require してインスタンスを生成する
+    //     const axiosBase = require('axios');
+    //     const axios = axiosBase.create({
+    //         headers: {
+    //             'Content-Type': 'application/json',
+    //             'X-Requested-With': 'XMLHttpRequest'
+    //         },
+    //         responseType: 'json'
+    //     });
 
-        const {data} = axios.get("http://localhost:3000/account/");
+    //     const {data} = axios.get("http://localhost:3000/account/");
 
-        console.log("到達");
-        console.log(data);
-        }
-    }
+    //     console.log("到達");
+    //     console.log(data);
+    //     },
+    //     setLoginId(newLoginId) {
+    //         console.log(newLoginId);
+    //         this.loginId = newLoginId;
+    //     },
+    //     setPassword(newPassword) {
+    //         console.log(newPassword);
+    //         this.password = newPassword;
+    //     }
+    // }
 }
 </script>
