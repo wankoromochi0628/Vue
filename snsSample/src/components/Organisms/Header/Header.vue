@@ -3,7 +3,7 @@
     <div class="navbar-brand">
       <a class="navbar-item" href="https://jp.vuejs.org/index.html" target="_blank">
         <img src="../../../assets/logo.png" >
-        <h3>Vue Samples</h3>
+        <h3><strong>Vue Samples</strong></h3>
       </a>
 
       <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
@@ -24,14 +24,14 @@
     <div class="navbar-end">
       <div class="navbar-item">
         <div class="buttons">
-          <a class="button">
+          <a class="button" href="https://github.com/wankoromochi0628/Vue" target="_blank">
             <span class="icon">
               <i class="fab fa-github"></i>
             </span>
             <span>GitHub</span>
           </a>
           <a class="button is-info" @click="signOut">
-            <strong>Log Out</strong>
+            <strong>ログアウト</strong>
           </a>
         </div>
       </div>
