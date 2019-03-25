@@ -16,6 +16,11 @@
                 description: "投稿内容"
             }
         },
+        methods: {
+            clearText() {
+                this.sentence = "";
+            }
+        },
         computed: {
             sentence: {
                 get() {

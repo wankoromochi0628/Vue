@@ -33,6 +33,9 @@ export default {
         updateSentence(newSentence) {
             console.log("RegistBox：" + newSentence);
             this.$emit('updateSentence', newSentence);
+        },
+        clearTextForm() {
+            this.$refs.TextForm.clearText();
         }
     }
 }

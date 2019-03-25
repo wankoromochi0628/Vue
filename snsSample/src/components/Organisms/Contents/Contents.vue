@@ -69,6 +69,8 @@ export default {
         const {data} = await axios.get("http://localhost:3000/contents/");
 
         this.contents = data;
+
+        this.$refs.RegistBox.clearTextForm();
         },
 
         // 登録メソッド
