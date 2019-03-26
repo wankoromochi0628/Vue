@@ -6,7 +6,7 @@ import Signin from "@/components/Signin";
 
 Vue.use(Router);
 
-export default new Router({
+const router = new Router({
   routes: [
     {
       path: '/',
@@ -26,3 +26,13 @@ export default new Router({
     }
   ]
 });
+
+router.beforeEach((to, from, next) => {
+  let currentUser = firebase.auth().currentUser
+  let requiresAuth = to.matched.some(record => record.meta.requiresAuth)
+  if (requiresAuth && !currentUser) next('signin')
+  else if (!requiresAuth && currentUser) next()
+  else next()
+})
+
+export default router
