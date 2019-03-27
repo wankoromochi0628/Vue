@@ -28,11 +28,11 @@ export default {
         signIn: function () {
             firebase.auth().signInWithEmailAndPassword(this.username, this.password).then(
             user => {
-                alert('Success!')
                 this.$router.push('/')
             },
             err => {
-                alert(err.message)
+                console.log(err.message);
+                alert("メールアドレスまたはパスワードが間違っています。")
             })
         }
     }

@@ -69,8 +69,6 @@ export default {
         const {data} = await axios.get("http://localhost:3000/contents/");
 
         this.contents = data;
-
-        this.$refs.RegistBox.clearTextForm();
         },
 
         // 登録メソッド
@@ -81,7 +79,7 @@ export default {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-                    'name': 'wankoromochi0628',
+                    'name': firebase.auth().currentUser.email,
                     'words': this.sentence
                 })
             }).then(res => res.json());
