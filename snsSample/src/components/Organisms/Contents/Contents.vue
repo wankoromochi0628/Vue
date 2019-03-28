@@ -12,7 +12,7 @@
                 <div class="content" >
                     <p><strong>{{content.name}}</strong><br>
                         {{content.words}}<br>
-                        <small><a v-on:click="deleteContent(content.id)">delete</a> · 2 hrs</small>
+                        <small><a v-on:click="deleteContent(content.id)">delete</a> · {{content.postDate | moment}}</small>
                     </p>
                 </div>
             </div>
@@ -22,6 +22,7 @@
 
 <script>
 import RegistBox from "@/components/Molecules/Box/RegistBox.vue";
+import moment from 'moment';
 
 export default {
     name: "Contents",
@@ -58,6 +59,10 @@ export default {
                     name: {
                         type: String,
                         description: "投稿者名"
+                    },
+                    postDate: {
+                        type: Date,
+                        description: "投稿日時"
                     }
                 }
             ]
@@ -75,25 +80,24 @@ export default {
 
         // 表示メソッド
         async dispContents() {
-        // axios を require してインスタンスを生成する
-        const axiosBase = require('axios');
-        const axios = axiosBase.create({
-            headers: {
-                'Content-Type': 'application/json',
-                'X-Requested-With': 'XMLHttpRequest'
-            },
-            responseType: 'json'
-        });
+            // axios を require してインスタンスを生成する
+            const axiosBase = require('axios');
+            const axios = axiosBase.create({
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-Requested-With': 'XMLHttpRequest'
+                },
+                responseType: 'json'
+            });
 
-        const {data} = await axios.get("http://localhost:3000/contents/");
+            const {data} = await axios.get("http://localhost:3000/contents/");
 
-        this.contentsData = data;
-        console.log(data);
-        console.log(contentsData);
+            this.contentsData = data;
         },
 
         // 登録メソッド
         async registContent(postSentence) {
+            var current = new Date();
             fetch('http://localhost:3000/contents/', {
                 method: 'POST',
                 headers: {
@@ -101,7 +105,8 @@ export default {
                 },
                 body: JSON.stringify({
                     'name': this.name,
-                    'words': this.sentence
+                    'words': this.sentence,
+                    'postDate': current
                 })
             }).then(res => res.json());
         },
@@ -119,6 +124,12 @@ export default {
         // 配列の要素順番を逆順にする
         reverseContents() {
             return this.contentsData.slice().reverse();
+        }
+    },
+    filters: {
+        moment: function (date) {
+            // return moment(date).format('YYYY/MM/DD HH:mm');
+            return moment(date).fromNow();
         }
     }
 };

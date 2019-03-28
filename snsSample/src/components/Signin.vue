@@ -6,7 +6,7 @@
         <h2>Sign in</h2>
         <input type="text" placeholder="Username" v-model="username">
         <input type="password" placeholder="Password" v-model="password">
-        <button class="button is-success" @click="signIn">サインイン</button>
+        <button class="button is-success" @click="signIn" id="loginBtn">サインイン</button>
         <p>アカウントはお持ちですか?<br>
             <router-link to="/signup">今すぐアカウントを作成してみましょう!!</router-link>
         </p>
@@ -26,11 +26,14 @@ export default {
     },
     methods: {
         signIn: function () {
+            document.getElementById('loginBtn').classList.add('is-loading');
+
             firebase.auth().signInWithEmailAndPassword(this.username, this.password).then(
             user => {
                 this.$router.push('/')
             },
             err => {
+                document.getElementById('loginBtn').classList.remove('is-loading');
                 console.log(err.message);
                 alert("メールアドレスまたはパスワードが間違っています。")
             })
