@@ -6,9 +6,9 @@
         <h2>Sign up</h2>
         <input type="text" placeholder="Username" v-model="username">
         <input type="password" placeholder="Password" v-model="password">
-        <button class="button is-success is-outlined" @click="signUp">Register</button>
-        <p>Do you have an account?
-            <router-link to="/signin">sign in now!!</router-link>
+        <button class="button is-success" @click="signUp">アカウント作成</button>
+        <p>アカウントはお持ちですか?<br>
+            <router-link to="/signin">今すぐアカウントを作ってサインインしてみましょう!!</router-link>
         </p>
     </div>
 </template>
@@ -31,7 +31,8 @@ export default {
             alert('Create account: ', user.email)
             })
             .catch(error => {
-                alert(error.message)
+                console.log(error.message);
+                alert("メールアドレスを")
             })
         }
     }

@@ -42,9 +42,24 @@
 <script>
 export default {
   name: "Header",
+  created: function() {
+      let mail = firebase.auth().currentUser.email;
+      var pos = mail.indexOf("@");
+
+      console.log(pos);
+      if (pos < 0) {
+          this.user = "@" + mail;
+          console.log("文字列整形失敗" + this.user);
+      } else {
+          this.user = "@" + mail.substring(0, pos);
+          console.log("文字列整形成功" + this.user);
+      }
+  },
   data () {
     return {
-      user: firebase.auth().currentUser.email
+      user: {
+        type: String
+      }
     }
   },
   props: {

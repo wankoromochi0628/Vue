@@ -19,25 +19,18 @@
   "contents": [
     {
       "id": 1,
-      "name": "y_s",
+      "name": "@y_s",
       "words": "おはようございます！"
     },
     {
       "id": 2,
-      "name": "taro",
+      "name": "@taro",
       "words": "こんにちは！"
     },
     {
-      "name": "suzuki1420294@gmail.com",
-      "words": "こんばんは",
+      "name": "@suzuki1420294",
+      "words": "投稿",
       "id": 3
-    }
-  ],
-  "account": [
-    {
-      "id": 1,
-      "loginId": "wankoromochi0628",
-      "password": "interspace"
     }
   ]
 }

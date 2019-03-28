@@ -5,18 +5,15 @@
             ユーザー
             </p>
             <ul class="menu-list">
-                <li><a href="#"><small>@{{menuUser}}</small></a></li>
+                <li><a href="#"><small>{{menuUser}}</small></a></li>
             </ul>
-            <p class="menu-label">
-                キーワード
+            <p class="menu-label　has-background-success">
+                メニュー
             </p>
             <ul class="menu-list">
-                <li><a href="#">目次</a></li>
-                <li><a class="is-success" href="#">サンプルプログラム</a>
-                    <ul>
-                        <li><a href="">SNSアプリを実装する</a></li>
-                    </ul>
-                </li>
+                <ul>
+                    <li><a href="">SNSアプリを実装する</a></li>
+                </ul>
             </ul>
         </aside>
     </div>
@@ -26,9 +23,24 @@
 
 export default {
     name: "Menu",
+    created: function() {
+        let mail = firebase.auth().currentUser.email;
+        var pos = mail.indexOf("@");
+
+        console.log(pos);
+        if (pos < 0) {
+            this.menuUser = "@" + mail;
+            console.log("文字列整形失敗" + this.menuUser);
+        } else {
+            this.menuUser = "@" + mail.substring(0, pos);
+            console.log("文字列整形成功" + this.menuUser);
+        }
+    },
     data () {
         return {
-        menuUser: firebase.auth().currentUser.email
+            menuUser: {
+                type: String
+            }
         }
     },
     computed: {

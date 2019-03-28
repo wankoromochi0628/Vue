@@ -2,7 +2,7 @@
     <div class="column">
         <RegistBox v-on:regist="registContent" @updateSentence="setSentence"/>
 
-        <article class="box media" v-for="(content, index) in contents" v-bind:key="index">
+        <article class="box media" v-for="(content, index) in reverseContents" v-bind:key="index">
             <figure class="media-left">
                 <p class="image is-64x64">
                     <img src="../../../assets/logo.png">
@@ -10,7 +10,7 @@
             </figure>
             <div class="media-content" >
                 <div class="content" >
-                    <p>ID:{{content.id}}<br><strong>{{content.name}}</strong><br>
+                    <p><strong>{{content.name}}</strong><br>
                         {{content.words}}<br>
                         <small><a v-on:click="deleteContent(content.id)">delete</a> · 2 hrs</small>
                     </p>
@@ -27,21 +27,40 @@ export default {
     name: "Contents",
     created: function() {
         this.dispContents();
+
+        let mail = firebase.auth().currentUser.email;
+        var pos = mail.indexOf("@");
+
+        console.log(pos);
+        if (pos < 0) {
+            this.name = "@" + mail;
+            console.log("文字列整形失敗" + this.name);
+        } else {
+            this.name = "@" + mail.substring(0, pos);
+            console.log("文字列整形成功" + this.name);
+        }
     },
     updated: function() {
         this.dispContents();
     },
     data() {
         return {
-            contents: {},
-            sentence: {
-                type: String,
-                description: "登録する投稿内容"
-            },
-            id: {
-                type: Number,
-                description: "投稿ID"
-            }
+            contentsData: [
+                {
+                    id: {
+                        type: Number,
+                        description: "投稿ID"
+                    },
+                    sentence: {
+                        type: String,
+                        description: "登録する投稿内容"
+                    },
+                    name: {
+                        type: String,
+                        description: "投稿者名"
+                    }
+                }
+            ]
         }
     },
     components: {
@@ -68,7 +87,9 @@ export default {
 
         const {data} = await axios.get("http://localhost:3000/contents/");
 
-        this.contents = data;
+        this.contentsData = data;
+        console.log(data);
+        console.log(contentsData);
         },
 
         // 登録メソッド
@@ -79,7 +100,7 @@ export default {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-                    'name': firebase.auth().currentUser.email,
+                    'name': this.name,
                     'words': this.sentence
                 })
             }).then(res => res.json());
@@ -92,6 +113,12 @@ export default {
             }).then(console.log);
 
             console.log(id + "を削除しました。");
+        }
+    },
+    computed: {
+        // 配列の要素順番を逆順にする
+        reverseContents() {
+            return this.contentsData.slice().reverse();
         }
     }
 };
